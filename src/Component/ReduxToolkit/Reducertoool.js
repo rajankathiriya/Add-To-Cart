@@ -32,7 +32,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 export const getlist = createAsyncThunk(
     'posts/getlist',
     async () => {
-        return fetch(`https://jsonplaceholder.typicode.com/comments`).then(y => y.json())
+        return fetch(`https://fakestoreapi.com/products`).then(y => y.json())
 
     }
 )

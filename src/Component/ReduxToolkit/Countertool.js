@@ -29,30 +29,45 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getlist } from './Reducertoool';
 
 
+
 const Countertool = () => {
 
     const data = useSelector(y => y.post)
-    const dis = useDispatch()
+    const mydis = useDispatch()
 
     console.log(data);
 
     useEffect(() => {
-        dis(getlist({ name: 1 }))
-    }, [dis]);
+        mydis(getlist())
+    }, []);
     return (
-        <div><ul>
-            {data?.data?.map((val, index) => {
+        <div>
+            {data?.data.map((val, index) => {
                 return (
-
-                    <li key={index}>
-                        {val.name}
-                    </li>
-
+                    <div className='text-center col-4 ' id='rajan' key={index}>
+                        <div className="card  m-3 " >
+                            <div className="card-body ">
+                                <h1>{val.category}</h1>
+                                <h5 className="card-title">{val.title}</h5>
+                                <h5 className="card-title">{val.price}</h5>
+                                <p className="card-text">{val.description}</p>
+                                {/* <p ></p> */}
+                                <img src={val.image} className='w-50 mx-auto' alt="" />
+                                <div>
+                                    <p >{val.rating.rate}</p>
+                                </div>
+                                <a href="#" className="btn btn-outline-primary mx-1">Buy Now</a>
+                                <a href="#" className="btn btn-outline-primary mx-1">Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
                 )
             })}
-        </ul></div>
+        </div>
     );
 }
+
+
 
 export default Countertool;
 
